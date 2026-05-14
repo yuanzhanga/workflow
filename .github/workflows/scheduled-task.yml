@@ -1,0 +1,24 @@
+name: 定时执行任务
+
+on:
+  schedule:
+    # 每天北京时间 8:00 执行（UTC 0:00）
+    - cron: '0 0 * * *'
+  # 允许手动触发
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 执行脚本
+        run: node aiNews.js
