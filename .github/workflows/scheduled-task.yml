@@ -1,4 +1,4 @@
-name: 定时执行任务
+name: 定时推送AI新闻
 
 on:
   schedule:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-script:
+  pushAINews:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +18,7 @@ jobs:
       - name: 设置 Node.js 环境
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: 执行脚本
         run: node aiNews.js
